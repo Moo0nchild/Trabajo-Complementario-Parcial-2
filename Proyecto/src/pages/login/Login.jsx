@@ -32,11 +32,11 @@ export function Login() {
   }
 
   return (
-    <div>
-      <header>
+    <div className='body-login'>
+      <header className='header-login'>
         <img src={logo} alt='#' className='login-logo' />
       </header>
-      <main>
+      <main className='main-login'>
         <div className='login-container'>
           <h2>Inicia sesión</h2>
           <div className='login-inputs'>
