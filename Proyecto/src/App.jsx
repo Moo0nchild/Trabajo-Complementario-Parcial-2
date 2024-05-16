@@ -1,33 +1,30 @@
 //? React Imports
 import { Routes, Route } from 'react-router-dom'
-import { lazy, Suspense } from 'react'
 //? Components Imports
-const Dielectric = lazy(() => import('./labs/dielectric/Dielectric'))
-const IndexPage = lazy(() => import('./pages/overview/IndexPage'))
-const Login = lazy(() => import('./pages/login/Login'))
-const PageNotFound = lazy(() => import('./pages/pagenotfound/PageNotFound'))
+import { Dielectric } from './labs/dielectric/Dielectric'
+import { Login } from './pages/login/Login'
+import { PageNotFound } from './pages/pagenotfound/PageNotFound'
+import { IndexPage } from './pages/overview/IndexPage'
+import AuthProvider from './pages/login/AuthProvider'
+import PrivateRoute from './pages/login/PrivateRoute'
 //? CSS Imports
 import './App.css'
-import { Preloader } from './pages/preloader/Preloader'
+import { Catalogo } from './pages/catalogo/Catalogo'
 
 function App() {
   return (
-    <>
-      <Suspense
-        fallback={
-          <div>
-            <Preloader />
-          </div>
-        }
-      >
-        <Routes>
-          <Route path='/' element={<IndexPage />} />
-          <Route path='/dielectric' element={<Dielectric />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='*' element={<PageNotFound />} />
-        </Routes>
-      </Suspense>
-    </>
+    <AuthProvider>
+      <Routes>
+        <Route path='/' element={<IndexPage />} />
+        <Route path='/login' element={<Login />} />
+        <Route element={<PrivateRoute />}>\
+          <Route path='/catalogo' element={<Catalogo />} />
+          <Route path='/dielectric' element={<Dielectric />} /> 
+        </Route> 
+        {/* <Route path='/dielectric' element={<Dielectric />} /> */}
+        <Route path='*' element={<PageNotFound />} />
+      </Routes>
+    </AuthProvider>
   )
 }
 export default App
