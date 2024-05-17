@@ -6,6 +6,11 @@ import { useNavigate } from 'react-router-dom'
 
 export function Catalogo() {
   const navigate = useNavigate()
+
+  const handleButtonClick = () => {
+    window.open('https://calculadoradecapacitancia.netlify.app/index.html')
+  }
+
   return (
     <div className='body-catalogo'>
       <h1 className='body-catalogo-title'>Catalogo de Simuladores</h1>
@@ -15,11 +20,11 @@ export function Catalogo() {
             src={CapacitanciaMiniatura}
             alt='Capacitancia'
             className='catalogo-image'
-            onClick={() => navigate('/dielectric')}
+            onClick={handleButtonClick}
           />
           <h1
             className='catalogo-title'
-            onClick={() => navigate('/dielectric')}
+            onClick={handleButtonClick}
           >
             Capacitancia
           </h1>

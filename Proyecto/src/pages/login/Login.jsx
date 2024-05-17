@@ -4,8 +4,11 @@ import { FooterLogin } from '../../components/login/FooterLogin'
 import logo from '../../assets/logo without background.png'
 import { useState } from 'react'
 import { useAuth } from './AuthProvider'
+import { useNavigate } from 'react-router-dom'
 
 export function Login() {
+  const navigate = useNavigate()
+
   const [input, setInput] = useState({
     username: '',
     password: '',
@@ -39,7 +42,7 @@ export function Login() {
   return (
     <div className='body-login'>
       <header className='header-login'>
-        <img src={logo} alt='#' className='login-logo' />
+        <img onClick={() => navigate('/') } src={logo} alt='#' className='login-logo' />
       </header>
       <form className='main-login' onSubmit={handleSubmitEvent}>
         <div className='login-container'>

@@ -10,6 +10,7 @@ import PrivateRoute from './pages/login/PrivateRoute'
 //? CSS Imports
 import './App.css'
 import { Catalogo } from './pages/catalogo/Catalogo'
+import { Apifetch } from './pages/Apifetch'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route path='/' element={<IndexPage />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/fetch' element={<Apifetch />} />
         <Route element={<PrivateRoute />}>\
           <Route path='/catalogo' element={<Catalogo />} />
           <Route path='/dielectric' element={<Dielectric />} /> 
